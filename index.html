@@ -46,7 +46,7 @@
                     </li> -->
                 </ul>
             </div>
-            <div class="d-flex text-center w-100 justify-content-center align-items-center flex-column mt-5">
+            <div class="d-flex text-center w-100 justify-content-center align-items-center flex-column mt-5 pt-5">
                 <h1 id="full-stak" class="typing"></h1>
                 <div class="d-flex mt-4">
                     <a href="https://www.facebook.com/sajad.salam.798" target="_blank" class="text-white mx-3">
@@ -63,7 +63,7 @@
                         <i class="fab fa-linkedin fa-2x"></i>
                     </a>
                 </div>
-                <button class="btn btn-light btn-lg mt-5">
+                <button class="btn btn-light btn-lg mt-5" id="learn">
                     <i class="fas fa-arrow-circle-down"></i>
                     Learn More
                 </button>
@@ -73,19 +73,46 @@
     <script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script>
-        var full = 'A Full stack developer'.split('');
+        function randomIntFromInterval(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        var full = 'A Full stack developer';
+        var i = full.length;
+        var remove 
         $(document).ready(function () {
             var i = 0;
-            setTimeout(function () {
-                $('#full-stak').append(full[i]);
-                i++;
-                if (i < full.length) {
-                    setTimeout(arguments.callee, 100);
+            var reverse = false;
+            setInterval(() => {
+                if(reverse){
+                    $('#full-stak').html(full.substring(0, i));
+                    i--;
+                } else {
+                    $('#full-stak').append(full[i]);
+                    i++;
                 }
-                if(i == full.length){
-                    $('.typing').removeClass('typing');
+                if (i == full.length) {
+                    // clearInterval();
+                    reverse = true;
                 }
-            }, i * 100);
+                if(i == -1){
+                    reverse = false;
+                }
+            },  150);
+            $('#learn').hover(function () {
+                var random1 =randomIntFromInterval(0,window.innerWidth / 2);
+                var random2 =randomIntFromInterval(0,window.innerHeight / 2);
+                $(this).css({
+                    transform: 'translate(' + random1 +  'px,' + random2 +  'px)',
+                });
+            });
+            $('#learn').click(function () {
+                var random1 =randomIntFromInterval(0,window.innerWidth / 2);
+                var random2 =randomIntFromInterval(0,window.innerHeight / 2);
+                $(this).css({
+                    transform: 'translate(' + random1 +  'px,' + random2 +  'px)',
+                });
+            });
         })
     </script>
 </body>

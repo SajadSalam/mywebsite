@@ -1,6 +1,7 @@
 body {
-    color : white !important;
+    color: white !important;
 }
+
 .main {
     background-color: #000b1b;
     width: 100%;
@@ -9,6 +10,11 @@ body {
     position: relative;
     z-index: 21324;
 }
+
+.nav-link {
+    display: block;
+}
+
 .main::after {
     content: "";
     width: 100%;
@@ -16,6 +22,7 @@ body {
     position: absolute;
     vertical-align: middle;
     top: 0;
+    transform: scaleY(-1);
     left: 0;
     z-index: -2;
     opacity: 0.4;
@@ -23,7 +30,22 @@ body {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    animation-name: animate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+
 }
+
+@keyframes animate {
+    0% {
+        transform: skewX(10deg) translate(50px,-30px) scaleY(-1);
+    }
+    100% {
+        transform: skewX(1deg) skewY(1deg) scaleY(-1);
+    }
+}
+
 .main::before {
     content: "";
     width: 100%;
@@ -40,18 +62,33 @@ body {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    animation-name: animate2;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+@keyframes animate2 {
+    0% {
+        transform: skewX(10deg) scaleX(-1) translate(50px,-30px);
+    }
+    100% {
+        transform: skewX(1deg) scaleX(-1) skewY(1deg);
+    }
 }
 .nav-link {
     color: rgb(169, 169, 169) !important;
 }
+
 .nav-link.active {
     color: white !important;
     border-bottom: 3px solid #fff;
 }
+
 .typing {
     border-right: 1px solid #fff;
     animation: typing 1s steps(10, end) infinite;
 }
+
 @keyframes typing {
     from {
         border-right: 0;
