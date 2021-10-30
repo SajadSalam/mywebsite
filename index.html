@@ -89,11 +89,12 @@
                     i--;
                 } else {
                     $('#full-stak').append(full[i]);
+                    $('#full-stak').removeClass('typing');
                     i++;
                 }
                 if (i == full.length) {
-                    // clearInterval();
-                    reverse = true;
+                    clearInterval();
+                    // reverse = true;
                 }
                 if(i == -1){
                     reverse = false;
